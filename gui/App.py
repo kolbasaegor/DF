@@ -11,7 +11,7 @@ class App(QDialog):
         self.left = 100
         self.top = 100
         self.title = 'DF Computational Practicum'
-        self.width = 1400
+        self.width = 1600
         self.height = 800
         self.x0 = pi
         self.y0 = 1.0
@@ -28,6 +28,7 @@ class App(QDialog):
         self.UiComponents()
 
     def UiComponents(self):
+        shift = 200
         self.mplCanvas = MplCanvas(self)
 
         self.toolbar = NavigationToolbar(self.mplCanvas, self)
@@ -36,85 +37,85 @@ class App(QDialog):
 
         self.button = QPushButton("PLOT GRAPHS", self)
         self.button.setFont(QFont('Times', 20))
-        self.button.setGeometry(1010, 690, 380, 100)
+        self.button.setGeometry(1010+shift, 690, 380, 100)
         self.button.clicked.connect(self.buttonClicked)
 
         self.buttonLTE = QPushButton("LTE", self)
         self.buttonLTE.setDisabled(True)
         self.buttonLTE.setFont(QFont('Times', 20))
-        self.buttonLTE.setGeometry(1010, 590, 185, 90)
+        self.buttonLTE.setGeometry(1010+shift, 590, 185, 90)
         self.buttonLTE.clicked.connect(self.buttonLTEClicked)
 
         self.buttonGTE = QPushButton("GTE", self)
         self.buttonGTE.setDisabled(True)
         self.buttonGTE.setFont(QFont('Times', 20))
-        self.buttonGTE.setGeometry(1205, 590, 185, 90)
+        self.buttonGTE.setGeometry(1205+shift, 590, 185, 90)
         self.buttonGTE.clicked.connect(self.buttonGTEClicked)
 
         self.init_label = QLabel(self)
-        self.init_label.setGeometry(1080, 40, 250, 50)
+        self.init_label.setGeometry(1080+shift, 40, 250, 50)
         self.init_label.setFont(QFont('Arial', 16))
         self.init_label.setText("Initial Parameters")
 
         self.x0_label = QLabel(self)
-        self.x0_label.move(1060, 100)
+        self.x0_label.move(1060+shift, 100)
         self.x0_label.setFont(QFont('Arial', 16))
         self.x0_label.setText("x0 = ")
 
         self.y0_label = QLabel(self)
-        self.y0_label.move(1060, 160)
+        self.y0_label.move(1060+shift, 160)
         self.y0_label.setFont(QFont('Arial', 16))
         self.y0_label.setText("y0 = ")
 
         self.X_label = QLabel(self)
-        self.X_label.move(1060, 220)
+        self.X_label.move(1060+shift, 220)
         self.X_label.setFont(QFont('Arial', 16))
         self.X_label.setText("X  = ")
 
         self.N_label = QLabel(self)
-        self.N_label.move(1060, 280)
+        self.N_label.move(1060+shift, 280)
         self.N_label.setFont(QFont('Arial', 16))
         self.N_label.setText("N  = ")
 
         self.x0_input = QLineEdit(self)
-        self.x0_input.setGeometry(1150, 90, 200, 50)
+        self.x0_input.setGeometry(1150+shift, 90, 200, 50)
         self.x0_input.setFont(QFont('Arial', 16))
         self.x0_input.setPlaceholderText(str(self.x0))
         self.x0_input.setValidator(QDoubleValidator(-99.99, 99.99, 2))
 
         self.y0_input = QLineEdit(self)
-        self.y0_input.setGeometry(1150, 150, 200, 50)
+        self.y0_input.setGeometry(1150+shift, 150, 200, 50)
         self.y0_input.setFont(QFont('Arial', 16))
         self.y0_input.setPlaceholderText(str(self.y0))
         self.y0_input.setValidator(QDoubleValidator(-99.99, 99.99, 2))
 
         self.X_input = QLineEdit(self)
-        self.X_input.setGeometry(1150, 210, 200, 50)
+        self.X_input.setGeometry(1150+shift, 210, 200, 50)
         self.X_input.setFont(QFont('Arial', 16))
         self.X_input.setPlaceholderText(str(self.X))
         self.X_input.setValidator(QDoubleValidator(-99.99, 99.99, 2))
 
         self.N_input = QLineEdit(self)
-        self.N_input.setGeometry(1150, 270, 200, 50)
+        self.N_input.setGeometry(1150+shift, 270, 200, 50)
         self.N_input.setFont(QFont('Arial', 16))
         self.N_input.setPlaceholderText(str(self.N))
         self.N_input.setValidator(QIntValidator(1,1000))
 
         self.met_label = QLabel(self)
-        self.met_label.setGeometry(1080, 380, 250, 50)
+        self.met_label.setGeometry(1080+shift, 380, 250, 50)
         self.met_label.setFont(QFont('Arial', 16))
         self.met_label.setText("Show methods")
 
         self.e_cb = QCheckBox("Euler Method", self)
-        self.e_cb.setGeometry(1010, 440, 250, 50)
+        self.e_cb.setGeometry(1010+shift, 440, 250, 50)
         self.e_cb.setFont(QFont('Arial', 16))
 
         self.ie_cb = QCheckBox("Improved Euler Method", self)
-        self.ie_cb.setGeometry(1010, 480, 420, 50)
+        self.ie_cb.setGeometry(1010+shift, 480, 420, 50)
         self.ie_cb.setFont(QFont('Arial', 16))
 
         self.rk_cb = QCheckBox("Runge-Kutta Method", self)
-        self.rk_cb.setGeometry(1010, 520, 420, 50)
+        self.rk_cb.setGeometry(1010+shift, 520, 420, 50)
         self.rk_cb.setFont(QFont('Arial', 16))
 
 

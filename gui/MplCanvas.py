@@ -8,7 +8,7 @@ from engine.function import function
 
 class MplCanvas(FigureCanvas):
     def __init__(self, parent):
-        self.fig, self.ax = plt.subplots(figsize=(5, 4), dpi=200)
+        self.fig, self.ax = plt.subplots(figsize=(6, 4), dpi=200)
         self.ax.set(xlabel='x', ylabel='y', title="Approximation")
         self.ax.grid()
         super().__init__(self.fig)

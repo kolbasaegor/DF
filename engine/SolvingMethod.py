@@ -22,10 +22,6 @@ class SolvingMethod:
 
     def _computeLTE(self, x0, X, N):
         self.lte = np.empty(N + 1)
-        h = (X - x0) / N
-        for i in range(N + 1):
-            self.lte[i] = (function.y(self.x_array[i] + h) - function.y(self.x_array[i]) -
-                           h * function.f(self.x_array[i], self.y_array[i]))
 
     def _computeGTE(self, N):
         self.gte = np.empty(N + 1)
