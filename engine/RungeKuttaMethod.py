@@ -28,4 +28,3 @@ class RungeKuttaMethod(SolvingMethod):
             self.lte[i] = (function.y(self.x_array[i]+h) -
                            function.y(self.x_array[i]) -
                            1 / 6 * h * (k1 + 2*k2 + 2*k3 + k4))
-

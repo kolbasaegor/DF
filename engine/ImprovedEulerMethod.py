@@ -9,8 +9,10 @@ class ImprovedEulerMethod(SolvingMethod):
         self.y_array[0] = y0
 
         for i in range(1, N + 1):
-            predict = self.y_array[i-1] + h * function.f(self.x_array[i-1] , self.y_array[i-1])
-            self.y_array[i] = self.y_array[i-1] + h / 2 * (function.f(self.x_array[i-1] , self.y_array[i-1]) + function.f(self.x_array[i] , predict))
+            predict = self.y_array[i-1] + h * function.f(self.x_array[i-1], self.y_array[i-1])
+            self.y_array[i] = (self.y_array[i-1] + h / 2 *
+                               (function.f(self.x_array[i-1], self.y_array[i-1]) +
+                                function.f(self.x_array[i], predict)))
 
     def _computeLTE(self, x0, X, N):
         self.lte = np.empty(N + 1)

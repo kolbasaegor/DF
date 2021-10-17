@@ -19,7 +19,6 @@ class SolvingMethod:
     def _computeY(self, x0, y0, X, N):
         self.y_array = np.empty(N + 1)
 
-
     def _computeLTE(self, x0, X, N):
         self.lte = np.empty(N + 1)
 

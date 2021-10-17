@@ -6,6 +6,7 @@ from engine.ImprovedEulerMethod import ImprovedEulerMethod
 from engine.RungeKuttaMethod import RungeKuttaMethod
 from engine.function import function
 
+
 class MplCanvas(FigureCanvas):
     def __init__(self, parent):
         self.fig, self.ax = plt.subplots(figsize=(6, 4), dpi=200)
@@ -18,10 +19,8 @@ class MplCanvas(FigureCanvas):
         self.ie = ImprovedEulerMethod()
         self.rk = RungeKuttaMethod()
 
-
     def plot(self, eulerMethodVisible, improvedEulerMethod,
              rungeKuttaVisible, x0, y0, X, N):
-
 
         plt.cla()
         self.ax.set(xlabel='x', ylabel='y', title="Approximation")
@@ -31,7 +30,7 @@ class MplCanvas(FigureCanvas):
         x = np.empty(max(100, N) + 1)
         x[0] = x0
         for i in range(1, max(100, N) + 1):
-            x[i] = x[i-1] + h
+            x[i] = x[i - 1] + h
 
         self.ax.plot(x, [function.y(i) for i in x], label="Exact Solution")
 
@@ -51,12 +50,11 @@ class MplCanvas(FigureCanvas):
         self.draw()
 
     def plotLTE(self, eulerMethodVisible, improvedEulerMethod,
-             rungeKuttaVisible, x0, y0, X, N):
+                rungeKuttaVisible, x0, y0, X, N):
 
         plt.cla()
         self.ax.set(xlabel='x', ylabel='lte', title="Local Truncation Errors")
         self.ax.grid()
-
 
         if eulerMethodVisible:
             self.e.compute(x0, y0, X, N)
@@ -74,12 +72,11 @@ class MplCanvas(FigureCanvas):
         self.draw()
 
     def plotGTE(self, eulerMethodVisible, improvedEulerMethod,
-             rungeKuttaVisible, x0, y0, X, N):
+                rungeKuttaVisible, x0, y0, X, N):
 
         plt.cla()
         self.ax.set(xlabel='x', ylabel='gte', title="Global Truncation Errors")
         self.ax.grid()
-
 
         if eulerMethodVisible:
             self.e.compute(x0, y0, X, N)
@@ -95,7 +92,3 @@ class MplCanvas(FigureCanvas):
 
         plt.legend()
         self.draw()
-
-
-
-
