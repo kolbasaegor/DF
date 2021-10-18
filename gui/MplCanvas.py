@@ -92,3 +92,25 @@ class MplCanvas(FigureCanvas):
 
         plt.legend()
         self.draw()
+
+    def plotED(self, eulerMethodVisible, improvedEulerMethod,
+               rungeKuttaVisible, range_from,range_to, x0, y0, X):
+        plt.cla()
+        self.ax.set(xlabel='N', ylabel='Max GTE', title="GTE depending from N")
+        self.ax.grid()
+
+        if eulerMethodVisible:
+            self.e.computeED(range_from, range_to, x0, y0, X)
+            self.ax.plot(self.e.nki, self.e.maxGTE, label="Euler Method")
+
+        if improvedEulerMethod:
+            self.ie.computeED(range_from, range_to, x0, y0, X)
+            self.ax.plot(self.ie.nki, self.ie.maxGTE, label="Improved Euler")
+
+        if rungeKuttaVisible:
+            self.rk.computeED(range_from, range_to, x0, y0, X)
+            self.ax.plot(self.rk.nki, self.rk.maxGTE, label="Runge-Kutta")
+
+        plt.legend()
+        self.draw()
+

@@ -27,3 +27,16 @@ class SolvingMethod:
 
         for i in range(N + 1):
             self.gte[i] = function.y(self.x_array[i]) - self.y_array[i]
+
+    def computeED(self, range_from, range_to, x0, y0, X):
+        self.nki = [i for i in range(range_from, range_to+1)]
+
+        self.maxGTE = np.empty(len(self.nki))
+
+        for i in range(range_from, range_to+1):
+            self._computeX(x0, X, i)
+            self._computeY(x0, y0, X, i)
+            self._computeGTE(i)
+            self.maxGTE[i - range_from] = max(self.gte)
+            
+
