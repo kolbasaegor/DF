@@ -191,18 +191,21 @@ class App(QDialog):
         N_copy = self.N_input.text()
 
         if len(x0_copy) != 0:
+            x0_copy = x0_copy.replace('-', '')
             if x0_copy.replace(',', '').isdigit():
                 self.x0 = float(self.x0_input.text().replace(',', '.'))
                 if self.x0 == 0:
                     self.x0_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")
                     return False
             else:
+                print(x0_copy.replace(',', ''))
                 self.x0_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")
                 return False
             self.x0_input.setStyleSheet("QLineEdit { background-color: white;}")
 
         if len(y0_copy) != 0:
-            if y0_copy.replace(',', '').isdigit() or len(y0_copy) == 0:
+            y0_copy = y0_copy.replace('-', '')
+            if y0_copy.replace(',', '').isdigit():
                 self.y0 = float(self.y0_input.text().replace(',', '.'))
             else:
                 self.y0_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")
@@ -210,10 +213,12 @@ class App(QDialog):
             self.y0_input.setStyleSheet("QLineEdit { background-color: white;}")
 
         if len(X_copy) != 0:
-            if X_copy.replace(',', '').isdigit() or len(X_copy) == 0:
+            X_copy = X_copy.replace('-', '')
+            if X_copy.replace(',', '').isdigit():
                 self.X = float(self.X_input.text().replace(',', '.'))
-                if self.X <= self.x0:
+                if self.X <= self.x0 or self.X * self.x0 <= 0:
                     self.X_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")
+                    self.x0_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")
                     return False
             else:
                 self.X_input.setStyleSheet("QLineEdit { background-color: #ed808b;}")

@@ -2,6 +2,9 @@ from engine.function import function
 import numpy as np
 
 class SolvingMethod:
+    def __init__(self):
+        self.func = function()
+
     def compute(self, x0, y0, X, N):
         self._computeX(x0, X, N)
         self._computeY(x0, y0, X, N)
@@ -26,7 +29,7 @@ class SolvingMethod:
         self.gte = np.empty(N + 1)
 
         for i in range(N + 1):
-            self.gte[i] = function.y(self.x_array[i]) - self.y_array[i]
+            self.gte[i] = self.func.y(self.x_array[i]) - self.y_array[i]
 
     def computeED(self, range_from, range_to, x0, y0, X):
         self.nki = [i for i in range(range_from, range_to+1)]
